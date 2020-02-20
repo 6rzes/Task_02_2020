@@ -8,6 +8,7 @@ from sqlalchemy.ext.declarative import declarative_base
 # pylint: disable=invalid-name,
 Base = declarative_base()
 
+
 # pylint: disable=missing-class-docstring, too-few-public-methods
 class PostModel(Base):
     __tablename__ = 'posts'

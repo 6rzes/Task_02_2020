@@ -8,8 +8,6 @@ from data_base.fixtures.session import connection, session
 
 
 # pylint: disable=missing-module-docstring, missing-function-docstring, redefined-outer-name
-
-
 def test_create_posts(session):
     __create_batch()
     db_rows_count = len(session.query(PostModel).all())
