@@ -32,12 +32,15 @@ def test_select_post_by_id(session):
 def test_update_first_post(session):
     __create_batch()
     first_post = session.query(PostModel).with_for_update().first()
+    db_rows_count_before_update = len(session.query(PostModel).all())
     first_post.title = "new title"
     first_post.body = "new body"
     session.flush()
-    first_post_modified = session.query(PostModel).with_for_update().first()
+    db_rows_count_after_update = len(session.query(PostModel).all())
+    first_post_modified = session.query(PostModel).first()
     assert first_post_modified.title == first_post.title
     assert first_post_modified.body == first_post.body
+    assert db_rows_count_after_update == db_rows_count_before_update
 
 
 def __create_batch():
