@@ -1,2 +1,5 @@
 pytest
 requests
+sqlalchemy
+factory_boy
+pymysql

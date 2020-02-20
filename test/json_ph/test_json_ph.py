@@ -12,7 +12,7 @@ import requests
 
 # pylint: disable=unused-import
 from json_ph.assertions.assertions import BaseUserAsserts
-from json_ph.fixtures.fixtures import base_url, existing_user_load_id_1, new_user_load
+from json_ph.fixtures.user_fixtures import base_url, existing_user_load_id_1, new_user_load
 
 
 # pylint: disable=missing-function-docstring, redefined-outer-name, no-member, unused-import, unused-argument
