@@ -1,12 +1,19 @@
+# -*- coding: utf-8 -*-
+"""
+Tests for database
+"""
+# pylint: disable=unused-import
 from data_base.factories.post_factory import PostFactory, PostModel
-from data_base.model.post import PostModel
 from data_base.fixtures.session import connection, session
+
+
+# pylint: disable=missing-module-docstring, missing-function-docstring, redefined-outer-name
 
 
 def test_create_posts(session):
     __create_batch()
     db_rows_count = len(session.query(PostModel).all())
-    assert 10 == db_rows_count
+    assert db_rows_count == 10
 
 
 def test_delete_last_post(session):

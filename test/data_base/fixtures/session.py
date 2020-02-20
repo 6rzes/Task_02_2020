@@ -10,14 +10,15 @@ from sqlalchemy.orm import sessionmaker
 
 from data_base.factories.post_factory import PostFactory
 
-engine = create_engine(os.getenv("DATABASE_URL"))
-Session = sessionmaker()
+ENGINE = create_engine(os.getenv("DATABASE_URL"))
+SESSION = sessionmaker()
 
 
+# pylint: disable=missing-function-docstring, redefined-outer-name, protected-access
 @pytest.fixture(scope='function')
 def session(connection):
     transaction = connection.begin()
-    session = Session(bind=connection)
+    session = SESSION(bind=connection)
     PostFactory._meta.sqlalchemy_session = session
     yield session
     session.close()
@@ -26,6 +27,6 @@ def session(connection):
 
 @pytest.fixture(scope='module')
 def connection():
-    connection = engine.connect()
+    connection = ENGINE.connect()
     yield connection
     connection.close()

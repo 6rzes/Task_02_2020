@@ -8,7 +8,7 @@ import factory
 from data_base.model.post import PostModel
 
 
-# pylint: disable=missing-class-docstring
+# pylint: disable=missing-class-docstring, too-few-public-methods
 class PostFactory(factory.alchemy.SQLAlchemyModelFactory):
     post_id = factory.Sequence(lambda n: n)
     title = factory.Faker('word')
