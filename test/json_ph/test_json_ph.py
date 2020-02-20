@@ -60,3 +60,12 @@ def test_delete_user(base_url, user_id):
     response = requests.delete(''.join([base_url, "/", user_id]))
     BaseUserAsserts.assert_response_code(response.status_code, requests.codes.ok)
     BaseUserAsserts.assert_headers(response.headers)
+
+
+@pytest.mark.parametrize("user_id", ["1", "5", "9"])
+def test_get_nested_posts_by_user_id(base_url, user_id):
+    resource_name = "posts"
+    response = requests.get(''.join([base_url, "/", user_id, "/", resource_name]))
+    BaseUserAsserts.assert_response_code(response.status_code, requests.codes.ok)
+    BaseUserAsserts.assert_headers(response.headers)
+    BaseUserAsserts.assert_result_count(response, expected_result_count=10)
